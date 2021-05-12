@@ -1,0 +1,35 @@
+.o-title {
+    font-size: 28px;
+    font-weight: bold;
+
+    &--md {
+        font-size: 20px;
+    }
+
+    &--lg {
+        font-size: 32px;
+    }
+
+    &--normal {
+        font-weight: normal;
+    }
+
+    &--gy {
+        color: rgb(206, 212, 218);
+    }
+
+    &--wh {
+        color: #fff;
+    }
+}
+
+.l-heading {
+    margin-bottom: 32px;
+    text-align: center;
+
+    &--left {
+        text-align-last: left;
+    }
+}
+
+.c-txtPile {}

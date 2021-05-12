@@ -1,0 +1,21 @@
+.c-table {
+    width: 100%;
+    text-align: center;
+
+    &__th {
+        padding: 12px 0;
+        font-weight: bold;
+    }
+
+    &__td {
+        box-sizing: border-box;
+        padding: 8px 2px;
+        word-break: break-all;
+        border-bottom: 1px solid #bfbfbf;
+
+        &--h {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
