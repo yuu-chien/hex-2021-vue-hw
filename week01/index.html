@@ -7,6 +7,116 @@
         <link rel="stylesheet" href="./css/main.min.css" />
         <title>HW1．關注點分離</title>
     </head>
-    <body></body>
+    <body>
+        <section class="l-container l-container--gy" id="productsList">
+            <div class="l-container__cnt">
+                <div class="l-heading l-heading--left">
+                    <div class="o-title">Products list</div>
+                </div>
+                <div class="l-table" data-products-table>
+                    <table class="c-table">
+                        <thead>
+                            <tr>
+                                <th class="c-table__th">Title</th>
+                                <th class="c-table__th">Origin price</th>
+                                <th class="c-table__th">Sale price</th>
+                                <th class="c-table__th">On sale</th>
+                                <th class="c-table__th">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody data-productsList>
+                            <tr>
+                                <td class="c-table__td">Product Name</td>
+                                <td class="c-table__td">999999</td>
+                                <td class="c-table__td">999999</td>
+                                <td class="c-table__td">
+                                    <div class="o-radioSwt">
+                                        <label class="o-radioSwt__item">
+                                            <input type="radio" class="o-radioSwt__input" name="onSale" checked />
+                                            <span class="o-radioSwt__text">YES</span>
+                                        </label>
+                                        <label class="o-radioSwt__item">
+                                            <input type="radio" class="o-radioSwt__input" name="onSale" />
+                                            <span class="o-radioSwt__text">NO</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="c-table__td">
+                                    <a href="#">
+                                        <img src="https://raw.githubusercontent.com/yuu-chien/woof-fitting/a9453030325e75043809b8f1feeed0d50a7f1b43/content/images/icon/clear.svg" alt="" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="l-actions l-actions--part">
+                        <div class="l-actions__item">
+                            <a href="" class="o-btn o-btn--round o-btn--outline" data-empty-all>
+                                <span>Delete all products</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="o-title o-title--md o-title--gy u-hidden" data-list-hint>
+                    <p>
+                        Nothing in here.
+                        <br />
+                        Let's add product now ;-)
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="l-container">
+            <div class="l-container__cnt">
+                <div class="l-heading l-heading--left">
+                    <div class="o-title">Add New Product</div>
+                </div>
+                <div class="l-form">
+                    <div class="l-form__title">
+                        <label for="product_title">Title</label>
+                    </div>
+                    <div class="l-form__content">
+                        <div class="c-form">
+                            <div class="c-form__content">
+                                <input id="product_title" name="product_title" class="o-inputBox" type="text" placeholder="Please type your title" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-form">
+                    <div class="l-form__title">
+                        <label for="product_origin_prs">Origin price</label>
+                    </div>
+                    <div class="l-form__content">
+                        <div class="c-form">
+                            <div class="c-form__content">
+                                <input id="product_origin_prs" name="product_origin_prs" class="o-inputBox" type="number" placeholder="Please type origin price" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-form">
+                    <div class="l-form__title">
+                        <label for="product_prs">Sale Price</label>
+                    </div>
+                    <div class="l-form__content">
+                        <div class="c-form">
+                            <div class="c-form__content">
+                                <input id="product_prs" name="product_prs" class="o-inputBox" type="number" placeholder="Please type sale price" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-actions l-actions--v">
+                    <div class="l-actions__item">
+                        <a href="#" class="o-btn o-btn--round" data-addInfo>
+                            <span>Add Now !</span>
+                        </a>
+                    </div>
+                    <div class="l-actions__hint" data-addInfo-hint>Please confirm whether the purchase order information is correct.</div>
+                </div>
+            </div>
+        </section>
+    </body>
     <script src="./main.js"></script>
 </html>
