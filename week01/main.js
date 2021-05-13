@@ -10,19 +10,12 @@ const clearIcon = "https://raw.githubusercontent.com/yuu-chien/woof-fitting/a945
 // 3. 刪除單筆同上，應該將產品陣列中的該筆物件刪除，而非刪除 DOM 。
 // 4. tempData 中要有個布林值，用來表示否啟用產品。 目前雖然畫面上有切換效果、但實際資料上並沒有做切換。
 
-let tempData = {
-    id: 0,
-    name: "",
-    origin_prs: "",
-    prs: "",
-};
-
 let all_products = [];
 
 // 將資料渲染至列表
 function renderList() {
-    // $products_list.innerHTML = "";
     let str = "";
+
     all_products.forEach((item, index) => {
         str = `
         <tr data-product-id="${item.id}">
@@ -50,18 +43,22 @@ function renderList() {
         `;
     });
     $products_list.innerHTML += str;
+
     // 清空輸入欄位
     $title.value = "";
     $origin_prs.value = "";
     $prs.value = "";
-
-    delInfo();
 }
 
 // 新增產品
 $addBtn.addEventListener("click", (e) => {
     e.preventDefault();
-
+    let tempData = {
+        id: 0,
+        name: "",
+        origin_prs: "",
+        prs: "",
+    };
     if (all_products.length !== "") {
         let title = $title.value;
         let origin_prs = $origin_prs.value;
@@ -73,6 +70,7 @@ $addBtn.addEventListener("click", (e) => {
 
         all_products.push(tempData);
         renderList();
+        delInfo();
     }
 });
 
@@ -84,20 +82,17 @@ function delInfo() {
         delBtn.addEventListener("click", (e) => {
             e.preventDefault();
             let product_id = delBtn.getAttribute("data-delete");
-
             let newIndex = 0;
             console.log("product_id", product_id);
 
-            // all_products.forEach((goods, key) => {
-            //     if (product_id == goods.id) {
-            //         newIndex = key;
-            //         console.log(all_products);
-            //         //all_products.splice(newIndex, 1);
-            //     }
-            // });
-
-            renderList();
-            //document.querySelector(`[data-product-id='${product_id}']`).remove();
+            all_products.forEach((goods, key) => {
+                if (product_id == goods.id) {
+                    newIndex = key;
+                    all_products.splice(newIndex, 1);
+                    console.log(all_products);
+                    renderList();
+                }
+            });
         });
     });
 }
@@ -106,7 +101,7 @@ function delInfo() {
 const $emptyAllBtn = document.querySelector("[data-empty-all]");
 $emptyAllBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    $products_list.innerHTML = "";
+    console.log(all_products);
+    all_products = [];
+    renderList();
 });
-
-// renderList();
