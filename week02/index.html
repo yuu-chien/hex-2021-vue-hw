@@ -42,17 +42,17 @@
 <script>
 
     const $list = document.querySelector("[data-list]");
-    let all_products = [];
 
     const app = {
         data: {
             url: "https://vue3-course-api.hexschool.io/api",
-            api: "yu-for-test"
+            api: "yu-for-test",
+            all_products: [],
         },
         get() {
             axios.get(`${this.data.url}/${this.data.api}/products/all`)
                 .then(function(res) {
-                    all_products = res.data.products;
+                    app.data.all_products = res.data.products;
                     app.render();
                 })
                 .catch(function(err) {
@@ -61,8 +61,8 @@
         },
         render() {
             let str = '';
-            all_products.forEach((item) => {
-                str = `
+            app.data.all_products.forEach((item) => {
+                str += `
                     <tr>
                         <td>${item.title}</td>
                         <td><img src="${item.imageUrl}" class="item-img rounded" alt="${item.title}"></td>
@@ -70,8 +70,8 @@
                         <td>${item.origin_price}</td>
                         <td>${item.unit}</td>
                     </tr>`;
-                $list.innerHTML += str;
-            })
+            });
+            $list.innerHTML = str;
         }
     };
 
