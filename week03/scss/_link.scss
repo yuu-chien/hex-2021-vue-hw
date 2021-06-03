@@ -1,0 +1,35 @@
+.c-link {
+    display: flex;
+    align-items: center;
+
+    &__ico {
+        width: 24px;
+        height: 24px;
+        display: block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        &--add {
+            background-image: url(../image/icon/add.svg);
+        }
+
+        &--edit {
+            background-image: url(../image/icon/edit.svg);
+        }
+
+        &--out {
+            background-image: url(../image/icon/logout.svg);
+        }
+    }
+
+    &__ico+&__txt {
+        margin-left: 4px;
+    }
+
+    &__txt {}
+
+    &--sm {
+        font-size: 14px;
+    }
+}
