@@ -1,0 +1,19 @@
+.c-popup {
+    box-sizing: border-box;
+    display: none;
+    max-width: 720px;
+
+    &__wrap {}
+
+    &__tit {
+        color: #e2492f;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    &__cnt {
+        padding: 20px 0;
+    }
+
+    &__btns {}
+}

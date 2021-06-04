@@ -1,0 +1,37 @@
+.o-inpbox {
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 36px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: solid 1px #c3c9cf;
+}
+
+.c-form {
+    &__tit {}
+
+    &__tit+&__cnt {
+        margin-top: 8px;
+    }
+
+    &__cnt {}
+}
+
+.l-form {
+    display: flex;
+
+    &__item {
+        box-sizing: border-box;
+        padding: 0 16px;
+    }
+
+    &--2col {
+        margin: 0 -16px;
+    }
+
+    &--2col & {
+        &__item {
+            width: 50%;
+        }
+    }
+}

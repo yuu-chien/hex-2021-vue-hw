@@ -1,0 +1,32 @@
+.o-btn {
+    box-sizing: border-box;
+    display: block;
+    width: 120px;
+    padding: 8px 12px;
+    color: #fff;
+    text-align: center;
+    background: #e2492f;
+    border-radius: 6px;
+
+    &--gy {
+        color: #212529;
+        background: #dfdbdb;
+    }
+}
+
+
+.l-actions {
+    display: flex;
+    justify-content: center;
+    margin: 24px -8px 0 -8px;
+
+    &__item {
+        box-sizing: border-box;
+        padding: 0 8px;
+    }
+}
+
+// 套件修改
+.fancybox-button {
+    display: none;
+}
