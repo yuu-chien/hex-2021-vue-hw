@@ -7,10 +7,15 @@
     text-align: center;
     background: #e2492f;
     border-radius: 6px;
+    transition: .3s;
 
     &--gy {
         color: #212529;
         background: #dfdbdb;
+    }
+
+    &:hover {
+        background: #e34b31cc;
     }
 }
 
