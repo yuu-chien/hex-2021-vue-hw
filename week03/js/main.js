@@ -12,7 +12,9 @@ const app = createApp({
         }
     },
     mounted() {
-        const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+        // replace 中的 token 為自定義之名稱；若為作業用 hexToken 這個名稱需改為以下這行
+        // const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+        const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1');
         axios.defaults.headers.common['Authorization'] = token;
         this.getProducts();
     },

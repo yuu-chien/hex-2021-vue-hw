@@ -12,6 +12,9 @@
 
 <body>
     <div id="app">
+        <div class="c-loading" id="loadingSign">
+            <div></div>
+        </div>
         <div class="l-container">
             <div class="l-graphCard">
                 <div class="c-graphCard">
@@ -70,6 +73,9 @@
         mounted() { },
         methods: {
             signIn() {
+                const $loading_sign = document.querySelector("#loadingSign");
+                document.body.classList.add("is-loading");
+                $loading_sign.classList.add("is-show");
                 const url = `${this.api}/admin/signin`;
                 const username = document.querySelector("#user_name").value;
                 const password = document.querySelector("#user_psw").value;
@@ -85,11 +91,14 @@
                         if (res.data.success) {
                             const { token, expired } = res.data;  // 解構
                             // 儲存 token 與設定到期日
+                            // token 為自定義之名稱，作業是用 hexToken 這個名稱
                             document.cookie = `token=${token};expires=${new Date(expired)}; path=/`;
                             window.location = 'index.html';
                         } else {
                             $sign_hint.classList.add("is-show");
                         }
+                        document.body.classList.remove("is-loading");
+                        $loading_sign.classList.remove("is-show");
                     })
             }
         }
