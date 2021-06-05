@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.min.css">
+    <title>HW3．Vue.js 起步走 登入</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="l-container">
+            <div class="l-graphCard">
+                <div class="c-graphCard">
+                    <div class="c-graphCard__kv">
+                        <img src="./image/singup-kv.jpg" alt="">
+                    </div>
+                    <div class="c-graphCard__cnt">
+                        <div class="l-form">
+                            <div class="l-form__item">
+                                <div class="c-form">
+                                    <div class="c-form__tit">
+                                        <label for="user_name">帳號</label>
+                                    </div>
+                                    <div class="c-form__cnt">
+                                        <input type="text" name="user_name" id="user_name" required class="o-inpbox" autofocus required>
+                                    </div>
+                                </div>
+                                <div class="c-form">
+                                    <div class="c-form__tit">
+                                        <label for="user_psw">密碼</label>
+                                    </div>
+                                    <div class="c-form__cnt">
+                                        <input type="password" name="user_psw" id="user_psw" required class="o-inpbox" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l-hint">
+                            <p class="o-hint" data-hint>請確認輸入的帳號或密碼是否正確</p>
+                        </div>
+                        <div class="l-actions">
+                            <div class="l-actions__item">
+                                <button type="button" class="o-btn" v-on:click="signIn">登入</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script type="module">
+    import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.9/vue.esm-browser.js';
+
+    const app = createApp({
+        data() {
+            return {
+                api: "https://vue3-course-api.hexschool.io",
+                sign_data: {
+                    username: "",
+                    password: ""
+                },
+            }
+        },
+        mounted() { },
+        methods: {
+            signIn() {
+                const url = `${this.api}/admin/signin`;
+                const username = document.querySelector("#user_name").value;
+                const password = document.querySelector("#user_psw").value;
+                const $sign_hint = document.querySelector("[data-hint]");
+                this.sign_data = {
+                    username,
+                    password,
+                }
+                $sign_hint.classList.remove("is-show");
+                axios.post(url, this.sign_data)
+                    .then((res) => {
+                        console.log(res);
+                        if (res.data.success) {
+                            const { token, expired } = res.data;  // 解構
+                            // 儲存 token 與設定到期日
+                            document.cookie = `token=${token};expires=${new Date(expired)}; path=/`;
+                            window.location = 'index.html';
+                        } else {
+                            $sign_hint.classList.add("is-show");
+                        }
+                    })
+            }
+        }
+    });
+
+    app.mount("#app");
+
+</script>
+
+</html>

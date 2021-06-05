@@ -12,160 +12,175 @@
 </head>
 
 <body>
-    <div class="l-container">
-        <header class="l-header">
-            <div class="l-header__btn">
-                <a href="#" class="c-link">
-                    <i class="c-link__ico c-link__ico--out"></i>
-                </a>
-            </div>
-        </header>
-        <main>
-            <div class="l-kv">
-                <div>午安，管理者</div>
-            </div>
-            <div class="l-tab">
-                <div class="c-tab">
-                    <ul class="c-tab__navs">
-                        <li class="c-tab__item is-active">
-                            <a href="#">產品管理</a>
-                        </li>
-                        <li class="c-tab__item">
-                            <a href="#">訂單管理</a>
-                        </li>
-                        <li class="c-tab__item">
-                            <a href="#">優惠券管理</a>
-                        </li>
-                    </ul>
-                    <div class="c-tab__panel">
-                        <!-- 按鈕 -->
-                        <div class="l-tools">
-                            <!-- <div class="l-tools__result">總共有N件商品</div> -->
-                            <div class="l-tools__btns">
-                                <a href="#" class="c-link c-link--sm" data-fancybox data-src="#add_prod">
-                                    <i class="c-link__ico c-link__ico--add"></i>
-                                    <span class="c-link__txt">新增產品</span>
-                                </a>
+    <div id="app">
+        <div class="l-container">
+            <header class="l-header">
+                <div class="l-header__btn">
+                    <a href="#" class="c-link" v-on:click="signOut">
+                        <i class="c-link__ico c-link__ico--out"></i>
+                    </a>
+                </div>
+            </header>
+            <main>
+                <div class="l-kv">
+                    <div>午安，管理者</div>
+                </div>
+                <div class="l-tab">
+                    <div class="c-tab">
+                        <ul class="c-tab__navs">
+                            <li class="c-tab__item is-active">
+                                <a href="#">產品管理</a>
+                            </li>
+                            <li class="c-tab__item">
+                                <a href="#">訂單管理</a>
+                            </li>
+                            <li class="c-tab__item">
+                                <a href="#">優惠券管理</a>
+                            </li>
+                        </ul>
+                        <div class="c-tab__panel">
+                            <!-- 按鈕 -->
+                            <div class="l-tools">
+                                <!-- <div class="l-tools__result">總共有N件商品</div> -->
+                                <div class="l-tools__btns">
+                                    <a href="#" class="c-link c-link--sm" data-fancybox data-src="#add_prod">
+                                        <i class="c-link__ico c-link__ico--add"></i>
+                                        <span class="c-link__txt">新增產品</span>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- 列表 -->
-                        <div class="l-card">
-                            <div class="c-card">
-                                <div class="c-card__cnt">
-                                    <table class="c-table">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>名稱</th>
-                                                <th>類別</th>
-                                                <th>原價</th>
-                                                <th>售價</th>
-                                                <th>庫存</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>-MaOsWS9_DTajXXSL-80</td>
-                                                <td>KAFFEREP 燕麥餅</td>
-                                                <td>KAFFEREP</td>
-                                                <td>200</td>
-                                                <td>200</td>
-                                                <td>4</td>
-                                                <td>
-                                                    <a href="#" class="c-link">
-                                                        <i class="c-link__ico c-link__ico--edit"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <!-- 列表 -->
+                            <div class="l-card">
+                                <div class="c-card">
+                                    <div class="c-card__cnt">
+                                        <table class="c-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>名稱</th>
+                                                    <th>類別</th>
+                                                    <th>原價</th>
+                                                    <th>售價</th>
+                                                    <th>庫存</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="item in products" :key="item.id">
+                                                    <td>
+                                                        <span>{{ item.id }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ item.title }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ item.category }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ item.origin_price }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ item.price }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ item.num }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="c-link">
+                                                            <i class="c-link__ico c-link__ico--edit"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <footer></footer>
-    </div>
-    <!-- 燈箱 -->
-    <div id="add_prod" class="c-popup">
-        <div class="c-popup__wrap">
-            <div class="c-popup__tit">新增產品</div>
-            <div class="c-popup__cnt">
-                <div class="l-form l-form--2col">
-                    <div class="l-form__item">
-                        <div class="c-form">
-                            <div class="c-form__tit">
-                                <label for="prod_name">名稱</label>
+            </main>
+            <footer></footer>
+        </div>
+        <!-- 燈箱 -->
+        <div id="add_prod" class="c-popup">
+            <div class="c-popup__wrap">
+                <div class="c-popup__tit">新增產品</div>
+                <div class="c-popup__cnt">
+                    <div class="l-form l-form--2col">
+                        <div class="l-form__item">
+                            <div class="c-form">
+                                <div class="c-form__tit">
+                                    <label for="prod_name">名稱</label>
+                                </div>
+                                <div class="c-form__cnt">
+                                    <input type="text" name="prod_name" id="prod_name" required class="o-inpbox" autofocus>
+                                </div>
                             </div>
-                            <div class="c-form__cnt">
-                                <input type="text" name="prod_name" id="prod_name" required class="o-inpbox" autofocus>
+                            <div class="c-form">
+                                <div class="c-form__tit">
+                                    <label for="prod_cate">分類</label>
+                                </div>
+                                <div class="c-form__cnt">
+                                    <input type="text" name="prod_cate" id="prod_cate" required class="o-inpbox">
+                                </div>
+                            </div>
+                            <div class="c-form">
+                                <div class="c-form__tit">
+                                    <label for="prod_price">售價</label>
+                                </div>
+                                <div class="c-form__cnt">
+                                    <input type="number" name="prod_price" id="prod_price" required class="o-inpbox">
+                                </div>
+                            </div>
+                            <div class="c-form">
+                                <div class="c-form__tit">
+                                    <label for="prod_org_price">原價</label>
+                                </div>
+                                <div class="c-form__cnt">
+                                    <input type="number" name="prod_org_price" id="prod_org_price" required class="o-inpbox">
+                                </div>
+                            </div>
+                            <div class="c-form">
+                                <div class="c-form__tit">
+                                    <label for="prod_stocks">庫存</label>
+                                </div>
+                                <div class="c-form__cnt">
+                                    <input type="number" name="prod_stocks" id="prod_stocks" required class="o-inpbox">
+                                </div>
+                            </div>
+                            <div class="c-form">
+                                <div class="c-form__tit">
+                                    <label for="prod_state">狀態</label>
+                                </div>
+                                <div class="c-form__cnt">
+                                    <input type="number" name="prod_state" id="prod_state" required class="o-inpbox">
+                                </div>
                             </div>
                         </div>
-                        <div class="c-form">
-                            <div class="c-form__tit">
-                                <label for="prod_cate">分類</label>
-                            </div>
-                            <div class="c-form__cnt">
-                                <input type="text" name="prod_cate" id="prod_cate" required class="o-inpbox">
-                            </div>
+                        <div class="l-form__item">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ea quae modi recusandae sit dolores qui incidunt doloremque assumenda provident soluta, error maxime, alias minima architecto nulla iusto iure atque?</p>
                         </div>
-                        <div class="c-form">
-                            <div class="c-form__tit">
-                                <label for="prod_price">售價</label>
-                            </div>
-                            <div class="c-form__cnt">
-                                <input type="number" name="prod_price" id="prod_price" required class="o-inpbox">
-                            </div>
-                        </div>
-                        <div class="c-form">
-                            <div class="c-form__tit">
-                                <label for="prod_org_price">原價</label>
-                            </div>
-                            <div class="c-form__cnt">
-                                <input type="number" name="prod_org_price" id="prod_org_price" required class="o-inpbox">
-                            </div>
-                        </div>
-                        <div class="c-form">
-                            <div class="c-form__tit">
-                                <label for="prod_stocks">庫存</label>
-                            </div>
-                            <div class="c-form__cnt">
-                                <input type="number" name="prod_stocks" id="prod_stocks" required class="o-inpbox">
-                            </div>
-                        </div>
-                        <div class="c-form">
-                            <div class="c-form__tit">
-                                <label for="prod_state">狀態</label>
-                            </div>
-                            <div class="c-form__cnt">
-                                <input type="number" name="prod_state" id="prod_state" required class="o-inpbox">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="l-form__item">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ea quae modi recusandae sit dolores qui incidunt doloremque assumenda provident soluta, error maxime, alias minima architecto nulla iusto iure atque?</p>
                     </div>
                 </div>
-            </div>
-            <div class="c-popup__btn">
-                <div class="l-actions">
-                    <div class="l-actions__item">
-                        <button type="button" class="o-btn o-btn--gy">取消</button>
-                    </div>
-                    <div class="l-actions__item">
-                        <button type="button" class="o-btn">確定</button>
+                <div class="c-popup__btn">
+                    <div class="l-actions">
+                        <div class="l-actions__item">
+                            <button type="button" class="o-btn o-btn--gy">取消</button>
+                        </div>
+                        <div class="l-actions__item">
+                            <button type="button" class="o-btn">確定</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script src="https://unpkg.com/vue@next"></script>
+<!-- axios -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script></script>
+<script src="./js/main.js" type="module"></script>
 
 </html>

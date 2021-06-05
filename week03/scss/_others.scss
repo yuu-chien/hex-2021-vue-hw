@@ -1,0 +1,13 @@
+.o-hint {
+    display: none;
+    color: #e2492f;
+    font-size: 12px;
+
+    &.is-show {
+        display: block;
+    }
+}
+
+.l-hint {
+    margin-top: 16px;
+}

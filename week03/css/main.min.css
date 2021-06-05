@@ -530,6 +530,20 @@ body {
   font-size: 14px;
 }
 
+.o-hint {
+  display: none;
+  color: #e2492f;
+  font-size: 12px;
+}
+
+.o-hint.is-show {
+  display: block;
+}
+
+.l-hint {
+  margin-top: 16px;
+}
+
 .c-popup {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
